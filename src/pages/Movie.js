@@ -25,11 +25,11 @@ const Movie = () => {
         console.log("effect")
         postMovies()
         
-    }, [])
+    },[])
     return (
-        <div>
+        <div className='container mt-5'>
             Movie Page
-            <p>{data.message}</p>
+            <p>API POST :{data.message}</p>
         </div>
     )
 }

@@ -7,10 +7,11 @@ const Register = () => {
         name:"",
         email:"",
         password:"",
+        phoneNo:""
         
     });
     const [professions,setProfessions]=useState(["developer","tester"])
-    const {name,email,password}=user;
+    const {name,email,password,phoneNo}=user;
 
     const handleChange=(e)=>{
         setUser({...user,[e.target.name]:e.target.value})
@@ -20,10 +21,17 @@ const Register = () => {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(user,professions)
-        localStorage.setItem("auth",JSON.stringify({user,professions}))
+        if(name==="" || email==="" || password==="" || phoneNo===""){
+            alert('please fill the all fields')
+        }
+        else{
+            console.log(user,professions)
+            localStorage.setItem("auth",JSON.stringify({user,professions}))
         // alert("registration completed")
-        navigate("/login")
+            navigate("/login")
+
+        }
+        
     }
     return (
         <div className='container mt-5'>
@@ -39,6 +47,10 @@ const Register = () => {
             <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" className="form-control"name="password" value={password} onChange={handleChange} />
+            </div>
+            <div className="form-group">
+                <label htmlFor="phone">Phone No</label>
+                <input type="number" id="phone" className="form-control"name="phoneNo" value={phoneNo} onChange={handleChange} />
             </div>
             <div className="form-group">
                 <label htmlFor="profession">Professions</label>
